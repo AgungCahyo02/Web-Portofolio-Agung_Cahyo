@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agung Cahyo | Front-End Web Developer Portfolio</title>
+    <meta name="description" content="The official portfolio of Agung Cahyo, a Software Engineering student at SMKN 1 Kepanjen. Focused on Front-End Web Development and Responsive UI/UX.">
+    
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- JavaScript -->
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- Ambient Glowing Orbs -->
+    <div class="ambient-glow glow-top" aria-hidden="true"></div>
+    <div class="ambient-glow glow-bottom" aria-hidden="true"></div>
+
+    <!-- SIDEBAR IKON SOSIAL (Desktop Kiri) -->
+    <aside class="social-sidebar" aria-label="Media Sosial">
+        <a href="https://github.com/AgungCahyo02" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub Profile">
+            <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn Profile">
+            <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="mailto:agungrplkanesa@gmail.com" aria-label="Send an email" title="Send an email directly">
+            <i class="fa-regular fa-envelope"></i>
+        </a>
+        <div class="sidebar-line"></div>
+    </aside>
+
+    <!-- HEADER / NAVIGASI GLASSMORPHISM -->
+    <header id="main-header">
+        <a href="#hero" class="logo" aria-label="Back to home">
+            <span class="logo-text">AC</span><span class="logo-cursor">_</span>
+        </a>
+        
+        <nav id="navbar" aria-label="Navigasi Utama">
+            <ul class="nav-links">
+                <li><a href="#hero" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="#about"><i class="fa-solid fa-user"></i> About</a></li>
+                <li><a href="#expertise"><i class="fa-solid fa-layer-group"></i> Skills</a></li>
+                <li><a href="#projects"><i class="fa-solid fa-code-fork"></i> Projects</a></li>
+                <li><a href="#contact-section"><i class="fa-solid fa-paper-plane"></i> Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <!-- Tombol Toggle Kapsul Mode Gelap/Terang -->
+            <button id="theme-toggle" aria-label="Change theme" title="Toggle dark / light mode">
+                <div class="switch-thumb"></div>
+                <i class="fa-solid fa-sun" aria-hidden="true"></i>
+                <i class="fa-solid fa-moon" aria-hidden="true"></i>
+            </button>
+            
+            <button id="btn-resume" class="btn-outline" title="View resume summary">
+                <i class="fa-regular fa-file-lines"></i> <span>Resume</span>
+            </button>
+            
+            <!-- Tombol Hamburger Mobile -->
+            <button id="menu-toggle" class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION: High Impact Split Screen -->
+        <section id="hero" class="hero-bg">
+            <span id="home" class="anchor-target"></span>
+            
+            <div class="hero-grid">
+                <!-- Kolom Kiri: Teks & Tombol Interaktif -->
+                <div class="hero-text">
+                    <!-- Status Badge -->
+                    <div class="status-pill">
+                        <span class="status-dot"></span>
+                        <span>Open to Collaboration</span>
+                    </div>
+
+                    <p class="greeting">
+                        <span class="line"></span> Hello, I'm <strong class="name-highlight">Agung Cahyo</strong>
+                    </p>
+                    
+                    <h1 class="hero-title">
+                        FRONT-END<br>
+                        <span class="text-gradient">WEB DEVELOPER</span>
+                    </h1>
+                    
+                    <p class="description">
+                        A Software Engineering student at <strong>SMKN 1 Kepanjen</strong>, combining clean, modern code architecture with fast, responsive, and interactive interface design.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn-primary">
+                            <span>Explore My Work</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" id="btn-kontak" class="btn-secondary">
+                            <i class="fa-regular fa-paper-plane"></i>
+                            <span>Contact Me</span>
+                        </a>
+                    </div>
+
+                    <!-- Quick Stats Ribbon -->
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <span class="stat-number">3+</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat-separator"></div>
+                        <div class="stat-card">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Semantic & Modern</span>
+                        </div>
+                        <div class="stat-separator"></div>
+                        <div class="stat-card">
+                            <span class="stat-number">SWE</span>
+                            <span class="stat-label">SMKN 1 Kepanjen</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kolom Kanan: Foto Profil & Frame Geometris -->
+                <div class="hero-image-wrapper">
+                    <!-- Floating Badge Atas -->
+                    <div class="floating-badge badge-top">
+                        <span class="badge-icon"><i class="fa-solid fa-terminal"></i></span>
+                        <div class="badge-text-group">
+                            <span class="badge-sub">CORE STACK</span>
+                            <strong>HTML5 • CSS3 • JS</strong>
+                        </div>
+                    </div>
+                    
+                    <!-- Kartu Foto dengan Bingkai Geometris -->
+                    <div class="image-card">
+                        <div class="card-glow-layer"></div>
+                        <img src="ac02.jpeg" alt="Foto Profil Agung Cahyo" class="profile-img">
+                        
+                        <!-- Floating Badge Bawah -->
+                        <div class="floating-badge badge-bottom">
+                            <span class="badge-icon pulse-icon"><i class="fa-solid fa-location-dot"></i></span>
+                            <div class="badge-text-group">
+                                <span class="badge-sub">BASED IN</span>
+                                <strong>Kepanjen, Malang, Indonesia</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-user-astronaut"></i> PROFILE</span>
+                <h2>About Me</h2>
+            </div>
+
+            <div class="about-card">
+                <div class="about-grid">
+                    <div class="about-main-text">
+                        <p class="about-lead">
+                            I am a young web developer focused on <strong>Front-End Engineering</strong>. As a Software Engineering student at SMKN 1 Kepanjen, I am developing my ability to turn visual designs into structured, semantic, and maintainable code.
+                        </p>
+                        <p>
+                            To me, web development is more than writing lines of code. It is a digital craft that brings together functionality, accessibility, and an enjoyable user experience.
+                        </p>
+
+                        <!-- Quote Filosofi -->
+                        <div class="code-quote">
+                            <i class="fa-solid fa-quote-left quote-icon"></i>
+                            <div class="quote-text">
+                                <p>"Good design blends seamlessly with function without compromising performance."</p>
+                                <span>— Agung Cahyo's Coding Principle</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Highlights Matrix -->
+                    <div class="about-highlights-grid">
+                        <div class="highlight-item">
+                            <div class="highlight-icon-box">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <span class="highlight-label">Education</span>
+                                <strong>SMKN 1 Kepanjen</strong>
+                                <span class="highlight-sub">Software Engineering</span>
+                            </div>
+                        </div>
+
+                        <div class="highlight-item">
+                            <div class="highlight-icon-box">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <span class="highlight-label">Location</span>
+                                <strong>Kepanjen, Malang</strong>
+                                <span class="highlight-sub">East Java, Indonesia</span>
+                            </div>
+                        </div>
+
+                        <div class="highlight-item">
+                            <div class="highlight-icon-box">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <span class="highlight-label">Specialty</span>
+                                <strong>Front-End & UI/UX</strong>
+                                <span class="highlight-sub">Responsive & Interactive</span>
+                            </div>
+                        </div>
+
+                        <div class="highlight-item">
+                            <div class="highlight-icon-box">
+                                <i class="fa-solid fa-envelope-open-text"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <span class="highlight-label">Contact Email</span>
+                                <strong>agungrplkanesa@gmail.com</strong>
+                                <span class="highlight-sub">Available to respond</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERTISE SECTION -->
+        <section id="expertise">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-microchip"></i> TECHNICAL SKILLS</span>
+                <h2>Skills & Developer Tools</h2>
+            </div>
+
+            <div class="grid-container">
+                <!-- Kategori 1 -->
+                <div class="skill-card">
+                    <div class="skill-card-top">
+                        <div class="skill-icon-wrapper">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3>Core Languages</h3>
+                    </div>
+                    <p class="skill-card-desc">Core markup and scripting languages for building interactive web pages.</p>
+                    <div class="skill-matrix">
+                        <span class="skill-tag"><i class="fa-brands fa-html5 text-orange"></i> Semantic HTML5</span>
+                        <span class="skill-tag"><i class="fa-brands fa-css3-alt text-blue"></i> CSS3 (Flexbox & Grid)</span>
+                        <span class="skill-tag"><i class="fa-brands fa-js text-yellow"></i> JavaScript (DOM)</span>
+                        <span class="skill-tag"><i class="fa-brands fa-python text-blue"></i> Basic Python</span>
+                    </div>
+                </div>
+                
+                <!-- Kategori 2 -->
+                <div class="skill-card">
+                    <div class="skill-card-top">
+                        <div class="skill-icon-wrapper">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                        </div>
+                        <h3>Developer Tools</h3>
+                    </div>
+                    <p class="skill-card-desc">Tools and version control systems for productive individual and team workflows.</p>
+                    <div class="skill-matrix">
+                        <span class="skill-tag"><i class="fa-solid fa-laptop-code text-blue"></i> Visual Studio Code</span>
+                        <span class="skill-tag"><i class="fa-brands fa-git-alt text-orange"></i> Git Version Control</span>
+                        <span class="skill-tag"><i class="fa-brands fa-github text-white"></i> GitHub Collaboration</span>
+                        <span class="skill-tag"><i class="fa-solid fa-terminal text-moss"></i> Terminal / CLI</span>
+                    </div>
+                </div>
+                
+                <!-- Kategori 3 -->
+                <div class="skill-card">
+                    <div class="skill-card-top">
+                        <div class="skill-icon-wrapper">
+                            <i class="fa-solid fa-pen-nib"></i>
+                        </div>
+                        <h3>Design & Audit</h3>
+                    </div>
+                    <p class="skill-card-desc">Interface design principles, plus web performance and accessibility auditing.</p>
+                    <div class="skill-matrix skill-matrix-audit">
+                        <span class="skill-tag"><i class="fa-solid fa-wand-magic-sparkles text-blue"></i> Canva Design</span>
+                        <span class="skill-tag"><i class="fa-brands fa-chrome text-yellow"></i> Chrome DevTools</span>
+                        <span class="skill-tag"><i class="fa-solid fa-gauge-high text-orange"></i> Lighthouse Audit</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-laptop-file"></i> SELECTED WORK</span>
+                <h2>Engineering Portfolio</h2>
+            </div>
+
+            <div class="project-grid">
+                <!-- Proyek 1 -->
+                <article class="project-card" data-project="1">
+                    <a href="https://tugas1-pi.vercel.app/" class="stretched-live-link" target="_blank" rel="noopener noreferrer" aria-label="Open Task 1 live demo"></a>
+                    <div class="card-browser-bar">
+                        <div class="browser-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="card-badge-num">TASK 01</span>
+                    </div>
+
+                    <img src="foto-tugas1.jpg" alt="Task 1 project preview" class="project-thumbnail">
+                    
+                    <div class="project-body">
+                        <h3>Student Digital Profile</h3>
+                        <div class="tech-pills">
+                            <span class="pill">HTML5 Semantic</span>
+                            <span class="pill">External CSS3</span>
+                            <span class="pill">Git</span>
+                        </div>
+                        <p class="description">
+                            Built a personal digital profile page using semantic HTML, a separate external stylesheet, and basic Git repository management.
+                        </p>
+                    </div>
+
+                    <div class="project-links">
+                        <button type="button" class="modal-trigger" data-project="1">
+                            <i class="fa-solid fa-circle-info"></i> Case Study
+                        </button>
+                        <a href="https://github.com/AgungCahyo02/Tugas-1-SMKN-1-KEPANJEN.git" target="_blank" rel="noopener noreferrer" class="repo-link">
+                            <i class="fa-brands fa-github"></i> Repository
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Proyek 2 -->
+                <article class="project-card" data-project="2">
+                    <a href="https://tugas-2-smkn-1-kepanjen.vercel.app/" class="stretched-live-link" target="_blank" rel="noopener noreferrer" aria-label="Open Task 2 live demo"></a>
+                    <div class="card-browser-bar">
+                        <div class="browser-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="card-badge-num">TASK 02</span>
+                    </div>
+
+                    <img src="foto-tugas2.jpg.png" alt="Task 2 project preview" class="project-thumbnail">
+
+                    <div class="project-body">
+                        <h3>Responsive Card & Skill Matrix</h3>
+                        <div class="tech-pills">
+                            <span class="pill">CSS Flexbox</span>
+                            <span class="pill">Media Queries</span>
+                            <span class="pill">Mobile-First</span>
+                        </div>
+                        <p class="description">
+                            Developed an adaptive profile card that shifts from a single-column smartphone layout to two columns on desktop, and audited it with Chrome DevTools.
+                        </p>
+                    </div>
+
+                    <div class="project-links">
+                        <button type="button" class="modal-trigger" data-project="2">
+                            <i class="fa-solid fa-circle-info"></i> Case Study
+                        </button>
+                        <a href="https://github.com/AgungCahyo02/Tugas-2-SMKN-1-KEPANJEN.git" target="_blank" rel="noopener noreferrer" class="repo-link">
+                            <i class="fa-brands fa-github"></i> Repository
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Proyek 3 -->
+                <article class="project-card" data-project="3">
+                    <a href="https://tugas-3-smkn-1-kepanjen.vercel.app/" class="stretched-live-link" target="_blank" rel="noopener noreferrer" aria-label="Open Task 3 live demo"></a>
+                    <div class="card-browser-bar">
+                        <div class="browser-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="card-badge-num">TASK 03</span>
+                    </div>
+
+                    <img src="foto-tugas3.jpg" alt="Task 3 project preview" class="project-thumbnail">
+
+                    <div class="project-body">
+                        <h3>Interactive Profile & Modal Popup</h3>
+                        <div class="tech-pills">
+                            <span class="pill">Vanilla JavaScript</span>
+                            <span class="pill">DOM Events</span>
+                            <span class="pill">State Handling</span>
+                        </div>
+                        <p class="description">
+                            Added interactive features with vanilla JavaScript, including a dismissible modal, real-time DOM updates, and keyboard event handling.
+                        </p>
+                    </div>
+
+                    <div class="project-links">
+                        <button type="button" class="modal-trigger" data-project="3">
+                            <i class="fa-solid fa-circle-info"></i> Case Study
+                        </button>
+                        <a href="https://github.com/AgungCahyo02/Tugas-3-SMKN-1-KEPANJEN.git" target="_blank" rel="noopener noreferrer" class="repo-link">
+                            <i class="fa-brands fa-github"></i> Repository
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- CALL TO ACTION / KONTAK SECTION -->
+        <section id="contact-section" class="cta-section">
+            <div class="cta-card">
+                <div class="cta-content">
+                    <span class="section-tag"><i class="fa-solid fa-handshake"></i> LET'S COLLABORATE</span>
+                    <h2>Have an Interesting Project or Want to Talk?</h2>
+                    <p>I'm open to discussing front-end development, internship opportunities, and website collaborations.</p>
+                    
+                    <div class="cta-actions">
+                        <a href="mailto:agungrplkanesa@gmail.com" class="btn-primary">
+                            <i class="fa-solid fa-paper-plane"></i> Send an Email
+                        </a>
+                        <button type="button" id="btn-copy-email" class="btn-secondary" title="Copy email address">
+                            <i class="fa-regular fa-copy"></i> <span id="copy-text">Copy Email</span>
+                        </button>
+                        <a href="https://github.com/AgungCahyo02" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                            <i class="fa-brands fa-github"></i> Visit GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <span class="logo">AC<span>_</span></span>
+                    <p>Agung Cahyo — Front-End Web Developer Portfolio.</p>
+                </div>
+
+                <div class="footer-nav">
+                    <a href="#hero">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#expertise">Skills</a>
+                    <a href="#projects">Projects</a>
+                </div>
+
+                <div class="footer-social">
+                    <a href="https://github.com/AgungCahyo02" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="mailto:agungrplkanesa@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="year">2026</span> Agung Cahyo. Built with Semantic HTML, Modern CSS, & Vanilla JS.</p>
+                <div class="easter-egg">
+                    <span class="javanese-text" title="Macapat Sinom philosophy: Knowledge is gained through practice and action">"Knowledge is gained through practice..."</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Back to Top Button -->
+    <button id="btn-back-to-top" class="back-to-top" aria-label="Back to the top of the page" title="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Toast Notification (Salin Email Feedback) -->
+    <div id="toast" class="toast" role="status" aria-live="polite">
+        <i class="fa-solid fa-circle-check"></i> <span>Email address copied to clipboard!</span>
+    </div>
+
+    <!-- 1. MODAL KONTAK -->
+    <div id="modalKontak" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalKontakTitle">
+        <div class="modal-box">
+            <div class="modal-icon-header">
+                <i class="fa-regular fa-paper-plane"></i>
+            </div>
+            <h2 id="modalKontakTitle">Contact Me</h2>
+            <p>Please reach out through your preferred channel:</p>
+            
+            <div class="modal-actions-grid">
+                <a href="mailto:agungrplkanesa@gmail.com" class="btn-primary">
+                    <i class="fa-regular fa-envelope"></i> Send Email
+                </a>
+                <a href="https://github.com/AgungCahyo02" class="btn-secondary" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-github"></i> GitHub Profile
+                </a>
+            </div>
+
+            <div class="contact-email-badge">
+                <i class="fa-solid fa-at"></i> agungrplkanesa@gmail.com
+            </div>
+
+            <button id="btnTutupModal" class="btn-tutup">Close</button>
+        </div>
+    </div>
+
+    <!-- 2. MODAL STUDI KASUS PROYEK -->
+    <div id="modalStudiKasus" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="studiKasusTitle">
+        <div class="modal-box modal-box-large">
+            <div class="modal-header">
+                <span class="badge-label" id="studiKasusTag">CASE STUDY</span>
+                <h2 id="studiKasusTitle">Project Title</h2>
+                <p id="studiKasusStack" class="tech-stack">Tech Stack</p>
+            </div>
+            <div class="modal-body">
+                <div class="case-study-section">
+                    <h4><i class="fa-solid fa-bullseye"></i> Project Overview</h4>
+                    <p id="studiKasusOverview">Project description...</p>
+                </div>
+                <div class="case-study-section">
+                    <h4><i class="fa-solid fa-list-check"></i> Key Skills & Highlights</h4>
+                    <ul id="studiKasusPoints" class="case-points-list">
+                        <!-- Diisi secara dinamis via JS -->
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer-actions">
+                <a id="studiKasusRepo" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                    <i class="fa-brands fa-github"></i> Visit Repository
+                </a>
+                <button id="btnTutupStudiKasus" class="btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. MODAL RESUME -->
+    <div id="modalResume" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="resumeTitle">
+        <div class="modal-box">
+            <div class="modal-icon-header">
+                <i class="fa-regular fa-file-lines"></i>
+            </div>
+            <h2 id="resumeTitle">Resume Summary</h2>
+            <div class="resume-preview">
+                <p class="resume-intro"><strong>Agung Cahyo</strong> — Software Engineering student at SMKN 1 Kepanjen</p>
+                <div class="resume-points">
+                    <p><i class="fa-solid fa-check text-moss"></i> <strong>Focus:</strong> Front-End Web Development, Responsive UI/UX</p>
+                    <p><i class="fa-solid fa-check text-moss"></i> <strong>Tech:</strong> Semantic HTML5, Modern CSS3, Vanilla JS DOM, Git</p>
+                    <p><i class="fa-solid fa-check text-moss"></i> <strong>Auditing:</strong> Chrome DevTools Emulation & Lighthouse</p>
+                </div>
+                <p class="resume-note">A full Curriculum Vitae (CV) in PDF format is available upon request by email.</p>
+            </div>
+            <div class="modal-actions-grid">
+                <a href="mailto:agungrplkanesa@gmail.com?subject=Request%20CV%20Agung%20Cahyo" class="btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Request CV by Email
+                </a>
+            </div>
+            <button id="btnTutupResume" class="btn-tutup">Close</button>
+        </div>
+    </div>
+
+</body>
+</html>
