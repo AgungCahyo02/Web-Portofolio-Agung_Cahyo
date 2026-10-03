@@ -22,6 +22,44 @@
 </head>
 <body>
 
+    <div id="page-loader" class="page-loader" role="status" aria-live="polite" aria-label="Memuat portfolio">
+        <div class="loader-glow loader-glow-left" aria-hidden="true"></div>
+        <div class="loader-glow loader-glow-right" aria-hidden="true"></div>
+        <div class="loader-content">
+            <div class="loader-brand">
+                <div class="loader-mark" aria-hidden="true">AC<span>_</span></div>
+                <div class="loader-brand-copy">
+                    <strong>AGUNG CAHYO</strong>
+                    <span>PERSONAL PORTFOLIO</span>
+                </div>
+            </div>
+            <div class="loader-message">
+                <span class="loader-kicker">INITIALIZING EXPERIENCE</span>
+                <p>Menyiapkan portfolio<span class="loader-ellipsis" aria-hidden="true">...</span></p>
+                <span id="loader-percent" class="loader-percent" aria-hidden="true">00%</span>
+            </div>
+            <div
+                class="loader-progress"
+                role="progressbar"
+                aria-label="Progres pemuatan halaman"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+            >
+                <span id="loader-progress-fill"></span>
+            </div>
+            <div class="loader-footer">
+                <span class="loader-status"><span class="loader-status-dot"></span><span id="loader-status-text">Memuat aset...</span></span>
+                <span class="loader-stack">HTML <i></i> CSS <i></i> JS</span>
+            </div>
+        </div>
+    </div>
+    <noscript>
+        <style>
+            #page-loader { display: none; }
+        </style>
+    </noscript>
+
     <!-- Ambient Glowing Orbs -->
     <div class="ambient-glow glow-top" aria-hidden="true"></div>
     <div class="ambient-glow glow-bottom" aria-hidden="true"></div>
@@ -31,7 +69,7 @@
         <a href="https://github.com/AgungCahyo02" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub Profile">
             <i class="fa-brands fa-github"></i>
         </a>
-        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn Profile">
+        <a href="https://www.linkedin.com/in/agung-cahyo-a1457a440" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn Profile">
             <i class="fa-brands fa-linkedin-in"></i>
         </a>
         <a href="mailto:agungrplkanesa@gmail.com" aria-label="Send an email" title="Send an email directly">
@@ -289,7 +327,7 @@
                         <h3>Design & Audit</h3>
                     </div>
                     <p class="skill-card-desc">Interface design principles, plus web performance and accessibility auditing.</p>
-                    <div class="skill-matrix skill-matrix-audit">
+                    <div class="skill-matrix">
                         <span class="skill-tag"><i class="fa-solid fa-wand-magic-sparkles text-blue"></i> Canva Design</span>
                         <span class="skill-tag"><i class="fa-brands fa-chrome text-yellow"></i> Chrome DevTools</span>
                         <span class="skill-tag"><i class="fa-solid fa-gauge-high text-orange"></i> Lighthouse Audit</span>

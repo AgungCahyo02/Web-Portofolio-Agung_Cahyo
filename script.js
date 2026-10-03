@@ -4,6 +4,51 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    const pageLoader = document.querySelector('#page-loader');
+    if (pageLoader) {
+        const minimumDisplayTime = 1700;
+        const loaderStartedAt = performance.now();
+        const progressBar = pageLoader.querySelector('#loader-progress-fill');
+        const progressTrack = pageLoader.querySelector('.loader-progress');
+        const progressLabel = pageLoader.querySelector('#loader-percent');
+        const statusLabel = pageLoader.querySelector('#loader-status-text');
+        let pageLoaded = document.readyState === 'complete';
+
+        if (!pageLoaded) {
+            window.addEventListener('load', () => {
+                pageLoaded = true;
+            }, { once: true });
+        }
+
+        const progressTimer = window.setInterval(() => {
+            const elapsed = performance.now() - loaderStartedAt;
+            const progress = pageLoaded && elapsed >= minimumDisplayTime
+                ? 100
+                : Math.min(92, Math.round((elapsed / minimumDisplayTime) * 92));
+
+            if (progressBar) {
+                progressBar.style.width = `${progress}%`;
+            }
+            if (progressTrack) {
+                progressTrack.setAttribute('aria-valuenow', String(progress));
+            }
+            if (progressLabel) {
+                progressLabel.textContent = `${String(progress).padStart(2, '0')}%`;
+            }
+
+            if (progress === 100) {
+                window.clearInterval(progressTimer);
+                if (statusLabel) {
+                    statusLabel.textContent = 'Portfolio siap';
+                }
+                window.setTimeout(() => {
+                    pageLoader.setAttribute('aria-hidden', 'true');
+                    pageLoader.classList.add('is-hidden');
+                }, 250);
+            }
+        }, 40);
+    }
+
     // ==========================================
     // 1. FITUR DARK / LIGHT MODE DENGAN LOCALSTORAGE
     // ==========================================
