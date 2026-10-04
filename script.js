@@ -6,47 +6,54 @@
 document.addEventListener('DOMContentLoaded', () => {
     const pageLoader = document.querySelector('#page-loader');
     if (pageLoader) {
-        const minimumDisplayTime = 1700;
+        const minimumDisplayTime = 1000;
         const loaderStartedAt = performance.now();
-        const progressBar = pageLoader.querySelector('#loader-progress-fill');
-        const progressTrack = pageLoader.querySelector('.loader-progress');
-        const progressLabel = pageLoader.querySelector('#loader-percent');
-        const statusLabel = pageLoader.querySelector('#loader-status-text');
-        let pageLoaded = document.readyState === 'complete';
 
-        if (!pageLoaded) {
-            window.addEventListener('load', () => {
-                pageLoaded = true;
-            }, { once: true });
+        const hidePageLoader = () => {
+            const remainingDisplayTime = Math.max(
+                0,
+                minimumDisplayTime - (performance.now() - loaderStartedAt)
+            );
+
+            window.setTimeout(() => {
+                pageLoader.setAttribute('aria-hidden', 'true');
+                pageLoader.classList.add('is-hidden');
+            }, remainingDisplayTime);
+        };
+
+        if (document.readyState === 'complete') {
+            hidePageLoader();
+        } else {
+            window.addEventListener('load', hidePageLoader, { once: true });
         }
+    }
 
-        const progressTimer = window.setInterval(() => {
-            const elapsed = performance.now() - loaderStartedAt;
-            const progress = pageLoaded && elapsed >= minimumDisplayTime
-                ? 100
-                : Math.min(92, Math.round((elapsed / minimumDisplayTime) * 92));
+    const profileCard = document.querySelector('.image-card');
+    const canTiltProfileCard = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-            if (progressBar) {
-                progressBar.style.width = `${progress}%`;
-            }
-            if (progressTrack) {
-                progressTrack.setAttribute('aria-valuenow', String(progress));
-            }
-            if (progressLabel) {
-                progressLabel.textContent = `${String(progress).padStart(2, '0')}%`;
-            }
+    if (profileCard && canTiltProfileCard.matches && !prefersReducedMotion.matches) {
+        profileCard.addEventListener('pointermove', (event) => {
+            const bounds = profileCard.getBoundingClientRect();
+            const pointerX = (event.clientX - bounds.left) / bounds.width;
+            const pointerY = (event.clientY - bounds.top) / bounds.height;
+            const tiltX = (0.5 - pointerY) * 8;
+            const tiltY = (pointerX - 0.5) * 8;
 
-            if (progress === 100) {
-                window.clearInterval(progressTimer);
-                if (statusLabel) {
-                    statusLabel.textContent = 'Portfolio siap';
-                }
-                window.setTimeout(() => {
-                    pageLoader.setAttribute('aria-hidden', 'true');
-                    pageLoader.classList.add('is-hidden');
-                }, 250);
-            }
-        }, 40);
+            profileCard.style.setProperty('--tilt-x', `${tiltX.toFixed(2)}deg`);
+            profileCard.style.setProperty('--tilt-y', `${tiltY.toFixed(2)}deg`);
+            profileCard.style.setProperty('--pointer-x', `${(pointerX * 100).toFixed(2)}%`);
+            profileCard.style.setProperty('--pointer-y', `${(pointerY * 100).toFixed(2)}%`);
+            profileCard.classList.add('is-interactive');
+        });
+
+        profileCard.addEventListener('pointerleave', () => {
+            profileCard.classList.remove('is-interactive');
+            profileCard.style.removeProperty('--tilt-x');
+            profileCard.style.removeProperty('--tilt-y');
+            profileCard.style.removeProperty('--pointer-x');
+            profileCard.style.removeProperty('--pointer-y');
+        });
     }
 
     // ==========================================
@@ -54,6 +61,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const btnToggleTema = document.querySelector('#theme-toggle');
     const bodyHalaman = document.body;
+    const themeLabel = btnToggleTema
+        ? btnToggleTema.querySelector('.theme-label')
+        : null;
+
+    function updateThemeToggle(isLight) {
+        if (themeLabel) {
+            themeLabel.textContent = isLight ? 'Dark mode' : 'Light mode';
+        }
+        if (btnToggleTema) {
+            btnToggleTema.setAttribute('aria-label', `Switch to ${isLight ? 'dark' : 'light'} mode`);
+        }
+    }
 
     function ambilTemaTersimpan() {
         try {
@@ -78,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         bodyHalaman.classList.remove('light-mode');
     }
+    updateThemeToggle(bodyHalaman.classList.contains('light-mode'));
 
     // Event listener tombol ganti tema
     if (btnToggleTema) {
@@ -85,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             const isLight = bodyHalaman.classList.toggle('light-mode');
             simpanTema(isLight ? 'light' : 'dark');
+            updateThemeToggle(isLight);
         });
     }
 
@@ -102,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (icon) {
                 icon.className = 'fa-solid fa-bars';
             }
+            menuToggle.setAttribute('aria-label', 'Open navigation menu');
         }
     }
 
@@ -113,6 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (icon) {
                 icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
             }
+            menuToggle.setAttribute(
+                'aria-label',
+                isOpen ? 'Close navigation menu' : 'Open navigation menu'
+            );
         });
 
         navLinks.querySelectorAll('a').forEach((link) => {
@@ -152,6 +178,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }, observerOptions);
 
         sections.forEach((section) => sectionObserver.observe(section));
+    }
+
+    const revealTargets = document.querySelectorAll(
+        '.stats-strip, #about .about-intro, #about .about-detail-row, '
+        + '#expertise .skills-heading, #expertise .skills-list > span, '
+        + '#projects .section-header, #projects .project-card, '
+        + '#contact-section .cta-card, footer .footer-brand, '
+        + 'footer .footer-explore, footer .footer-bottom'
+    );
+
+    if (
+        'IntersectionObserver' in window
+        && !prefersReducedMotion.matches
+        && revealTargets.length > 0
+    ) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            rootMargin: '0px 0px 5% 0px',
+            threshold: 0.12
+        });
+
+        revealTargets.forEach((target) => {
+            target.classList.add('scroll-reveal');
+            revealObserver.observe(target);
+        });
     }
 
     // ==========================================
@@ -200,14 +257,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ==========================================
-    // 5. MANAJEMEN MODAL (KONTAK, STUDI KASUS, RESUME)
+    // 5. MANAJEMEN MODAL (STUDI KASUS, RESUME)
     // ==========================================
-    const modalKontak = document.querySelector('#modalKontak');
     const modalStudiKasus = document.querySelector('#modalStudiKasus');
     const modalResume = document.querySelector('#modalResume');
-
-    const btnBukaKontak = document.querySelector('#btn-kontak');
-    const btnTutupKontak = document.querySelector('#btnTutupModal');
 
     const btnBukaResume = document.querySelector('#btn-resume');
     const btnTutupResume = document.querySelector('#btnTutupResume');
@@ -215,29 +268,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnTutupStudiKasus = document.querySelector('#btnTutupStudiKasus');
     const triggersStudiKasus = document.querySelectorAll('.modal-trigger');
 
+    let activeModal = null;
+    let previouslyFocusedElement = null;
+    let previousBodyOverflow = '';
+
+    function getModalFocusableElements(modalElement) {
+        return Array.from(modalElement.querySelectorAll(
+            'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )).filter((element) => element.getClientRects().length > 0);
+    }
+
     function bukaModal(modalElement) {
-        if (modalElement) {
-            modalElement.classList.add('show');
-            document.body.style.overflow = 'hidden';
+        if (!modalElement) {
+            return;
         }
+
+        previouslyFocusedElement = document.activeElement;
+        previousBodyOverflow = document.body.style.overflow;
+        activeModal = modalElement;
+        modalElement.classList.add('show');
+        modalElement.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        modalElement.querySelector('.modal-box')?.focus();
     }
 
     function tutupSemuaModal() {
         document.querySelectorAll('.modal-overlay').forEach((modal) => {
             modal.classList.remove('show');
+            modal.setAttribute('aria-hidden', 'true');
         });
-        document.body.style.overflow = '';
-    }
-
-    if (btnBukaKontak) {
-        btnBukaKontak.addEventListener('click', (event) => {
-            event.preventDefault();
-            bukaModal(modalKontak);
-        });
-    }
-
-    if (btnTutupKontak) {
-        btnTutupKontak.addEventListener('click', tutupSemuaModal);
+        activeModal = null;
+        document.body.style.overflow = previousBodyOverflow;
+        if (previouslyFocusedElement instanceof HTMLElement && previouslyFocusedElement.isConnected) {
+            previouslyFocusedElement.focus();
+        }
+        previouslyFocusedElement = null;
     }
 
     if (btnBukaResume) {
@@ -267,7 +332,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 pointsContainer.innerHTML = '';
                 data.points.forEach((point) => {
                     const li = document.createElement('li');
-                    li.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>${point}</span>`;
+                    const icon = document.createElement('i');
+                    icon.className = 'fa-solid fa-circle-check';
+                    icon.setAttribute('aria-hidden', 'true');
+                    const text = document.createElement('span');
+                    text.textContent = point;
+                    li.append(icon, text);
                     pointsContainer.appendChild(li);
                 });
 
@@ -294,9 +364,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
+        if (event.key === 'Escape' && activeModal) {
             tutupSemuaModal();
+        }
+
+        if (event.key === 'Escape') {
             closeMobileMenu();
+        }
+
+        if (event.key !== 'Tab' || !activeModal) {
+            return;
+        }
+
+        const focusableElements = getModalFocusableElements(activeModal);
+        if (focusableElements.length === 0) {
+            event.preventDefault();
+            activeModal.querySelector('.modal-box')?.focus();
+            return;
+        }
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        const focusIsOutsideModal = !activeModal.contains(document.activeElement);
+        const focusIsOnDialog = activeModal.querySelector('.modal-box') === document.activeElement;
+
+        if (event.shiftKey && (
+            document.activeElement === firstElement
+            || focusIsOutsideModal
+            || focusIsOnDialog
+        )) {
+            event.preventDefault();
+            lastElement.focus();
+        } else if (!event.shiftKey && (document.activeElement === lastElement || focusIsOutsideModal)) {
+            event.preventDefault();
+            firstElement.focus();
         }
     });
 
@@ -305,12 +406,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const btnCopyEmail = document.querySelector('#btn-copy-email');
     const toast = document.querySelector('#toast');
+    const toastMessage = document.querySelector('#toast-message');
+    const toastIcon = toast ? toast.querySelector('i') : null;
     const copyText = document.querySelector('#copy-text');
+    let toastTimer;
+    let copyTextTimer;
 
-    function tampilkanToast() {
+    function tampilkanToast(message, isError = false) {
         if (toast) {
+            if (toastMessage) {
+                toastMessage.textContent = message;
+            }
+            if (toastIcon) {
+                toastIcon.className = isError
+                    ? 'fa-solid fa-circle-exclamation'
+                    : 'fa-solid fa-circle-check';
+            }
+            window.clearTimeout(toastTimer);
             toast.classList.add('show');
-            setTimeout(() => {
+            toastTimer = window.setTimeout(() => {
                 toast.classList.remove('show');
             }, 3000);
         }
@@ -329,20 +443,34 @@ document.addEventListener('DOMContentLoaded', () => {
                     textArea.style.position = 'fixed';
                     textArea.style.opacity = '0';
                     document.body.appendChild(textArea);
-                    textArea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textArea);
+                    try {
+                        textArea.select();
+                        if (!document.execCommand('copy')) {
+                            throw new Error('Browser menolak perintah salin.');
+                        }
+                    } finally {
+                        textArea.remove();
+                    }
                 }
                 
                 if (copyText) {
                     copyText.textContent = 'Copied! ✓';
-                    setTimeout(() => {
+                    window.clearTimeout(copyTextTimer);
+                    copyTextTimer = window.setTimeout(() => {
                         copyText.textContent = 'Copy Email';
                     }, 2500);
                 }
-                tampilkanToast();
+                tampilkanToast('Email address copied to clipboard!');
             } catch (err) {
-                console.warn('Gagal menyalin email otomatis: ', err);
+                console.error('Gagal menyalin alamat email.', err);
+                if (copyText) {
+                    copyText.textContent = 'Copy failed';
+                    window.clearTimeout(copyTextTimer);
+                    copyTextTimer = window.setTimeout(() => {
+                        copyText.textContent = 'Copy Email';
+                    }, 2500);
+                }
+                tampilkanToast('Copy failed. Please copy the email address manually.', true);
             }
         });
     }
