@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agung Cahyo | Front-End Web Developer Portfolio</title>
+    <meta name="description" content="The official portfolio of Agung Cahyo, a Software Engineering student at SMKN 1 Kepanjen. Focused on Front-End Web Development and Responsive UI/UX.">
+    
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- JavaScript -->
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div id="page-loader" class="page-loader" role="status" aria-live="polite" aria-label="Loading portfolio">
+        <span class="loader-mark" aria-hidden="true">AC</span>
+        <span class="loader-bar" aria-hidden="true"><span></span></span>
+        <span class="loader-text">Loading...</span>
+    </div>
+    <noscript>
+        <style>
+            #page-loader { display: none; }
+        </style>
+    </noscript>
+
+    <!-- Ambient Glowing Orbs -->
+    <div class="ambient-glow glow-top" aria-hidden="true"></div>
+    <div class="ambient-glow glow-bottom" aria-hidden="true"></div>
+
+    <!-- SIDEBAR IKON SOSIAL (Desktop Kiri) -->
+    <aside class="social-sidebar" aria-label="Media Sosial">
+        <a href="https://github.com/AgungCahyo02" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub Profile">
+            <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/agung-cahyo-a1457a440" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn Profile">
+            <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="mailto:agungrplkanesa@gmail.com" aria-label="Send an email" title="Send an email directly">
+            <i class="fa-regular fa-envelope"></i>
+        </a>
+        <div class="sidebar-line"></div>
+    </aside>
+
+    <!-- SITE NAVIGATION -->
+    <header id="main-header">
+        <a href="#hero" class="logo" aria-label="Back to home">
+            <span class="logo-text">Agung Cahyo.</span>
+        </a>
+        
+        <nav id="navbar" aria-label="Navigasi Utama">
+            <ul class="nav-links">
+                <li><a href="#hero" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="#about"><i class="fa-solid fa-user"></i> About</a></li>
+                <li><a href="#expertise"><i class="fa-solid fa-layer-group"></i> Skills</a></li>
+                <li><a href="#projects"><i class="fa-solid fa-code-fork"></i> Projects</a></li>
+                <li><a href="#contact-section"><i class="fa-solid fa-paper-plane"></i> Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <button id="theme-toggle" aria-label="Switch to light mode" title="Toggle dark / light mode">
+                <i class="fa-solid fa-sun" aria-hidden="true"></i>
+                <span class="theme-label">Light mode</span>
+            </button>
+            
+            <!-- Tombol Hamburger Mobile -->
+            <button id="menu-toggle" class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section id="hero" class="hero-bg">
+            <span id="home" class="anchor-target"></span>
+            
+            <div class="hero-grid">
+                <!-- Kolom Kiri: Teks & Tombol Interaktif -->
+                <div class="hero-text">
+                    <div class="status-pill">
+                        <span class="status-dot"></span>
+                        <span>Student developer&nbsp; · &nbsp;Malang, Indonesia</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        Shaping user experiences<br>
+                        <span class="text-gradient"> with logic &amp; creativity.</span>
+                    </h1>
+                    
+                    <p class="description">
+                        I’m <strong>Agung Cahyo</strong>, a Software Engineering student at SMKN 1 Kepanjen and a participant in the UBIG Industry Class. I build web applications through a hands-on approach—learning by creating, testing, and continuously refining my work. For me, every project is an opportunity to solve practical problems and deliver a better user experience.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#contact-section" class="btn-primary">
+                            <span>Let’s talk</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
+                        <a href="#projects" class="btn-secondary">
+                            <span>Explore my work</span>
+                            <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <div class="hero-note">
+                        <span>01 / 03</span>
+                        <span>Currently expanding my skills with UBIG Industry Class.</span>
+                    </div>
+                </div>
+
+                <div class="hero-image-wrapper">
+                    <div class="floating-badge badge-top">
+                        <span class="badge-icon"><i class="fa-solid fa-terminal"></i></span>
+                        <div class="badge-text-group">
+                            <span class="badge-sub">CURRENTLY LEARNING</span>
+                            <strong>HTML · CSS · JavaScript</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="image-card">
+                        <div class="card-glow-layer"></div>
+                        <img src="ac-02.jpeg" alt="Portrait of Agung Cahyo" class="profile-img">
+                        <div class="floating-badge badge-bottom">
+                            <span class="badge-icon pulse-icon"><i class="fa-solid fa-location-dot"></i></span>
+                            <div class="badge-text-group">
+                                <span class="badge-sub">BASED IN</span>
+                                <strong>Kepanjen, Indonesia</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="stats-strip" aria-label="Portfolio highlights">
+            <div class="stats-strip-item">
+                <strong>03</strong>
+                <span><small>PROJECTS</small>Built through practice</span>
+            </div>
+            <div class="stats-strip-item">
+                <strong>05</strong>
+                <span><small>CORE SKILLS</small>Learning by building</span>
+            </div>
+            <div class="stats-strip-item">
+                <strong>RPL</strong>
+                <span><small>FIELD OF STUDY</small>SMKN 1 Kepanjen</span>
+            </div>
+        </div>
+
+        <!-- ABOUT SECTION -->
+        <section id="about">
+            <div class="section-header">
+                <span class="section-tag">ABOUT ME</span>
+            </div>
+
+            <div class="about-layout">
+                <div class="about-intro">
+                    <h2>Curious about how the web <span>comes together.</span></h2>
+                    <p>I’m Agung Cahyo, a Software Engineering student at SMKN 1 Kepanjen and an aspiring Front-End Developer. I learn best through hands-on project building, focusing on writing clean, thoughtful code to deliver intuitive, user-friendly web experiences.</p>
+                </div>
+                <div class="about-details">
+                    <div class="about-detail-row">
+                        <strong>Education</strong>
+                        <p>I’m studying Software Engineering (Rekayasa Perangkat Lunak) at SMKN 1 Kepanjen.</p>
+                    </div>
+                    <div class="about-detail-row">
+                        <strong>Industry learning</strong>
+                        <p>I am currently taking part in the UBIG Industry Class at PT. Universal Big Data, focusing on honing and expanding my skills in web application development.</p>
+                    </div>
+                    <div class="about-detail-row">
+                        <strong>Current focus</strong>
+                        <p>Building practical projects, iterating to learn, and polishing the details to make websites clean, clear, and impactful.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="expertise">
+            <div class="skills-heading">
+                <span class="section-tag">WHAT I’M WORKING WITH</span>
+            </div>
+            <div class="skills-list">
+                <span>HTML5 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
+                <span>CSS3 &amp; Flexbox <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
+                <span>Responsive design <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
+                <span>JavaScript &amp; DOM <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
+                <span>Git &amp; GitHub <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">A FEW THINGS I’VE BUILT SO FAR</span>
+                    <h2>Selected <span>projects.</span></h2>
+                </div>
+                <p class="projects-intro">A growing portfolio of practical work, ranging from my initial profile page to dynamic, interactive web applications.</p>
+            </div>
+
+            <div class="project-grid">
+                <!-- Proyek 1 -->
+                <article class="project-card" data-project="1">
+                    <div class="card-browser-bar">
+                        <div class="browser-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="card-badge-num">TASK 01</span>
+                    </div>
+
+                    <img src="foto-tugas1.jpg" alt="Preview of the Student Digital Profile project" class="project-thumbnail">
+                    
+                    <div class="project-body">
+                        <div class="project-meta"><span>MODULE 01</span><span>HTML · CSS</span><button type="button" class="modal-trigger" data-project="1">Details</button></div>
+                        <h3>Student Digital Profile</h3>
+                        <div class="tech-pills">
+                            <span class="pill">HTML5 Semantic</span>
+                            <span class="pill">External CSS3</span>
+                            <span class="pill">Git</span>
+                        </div>
+                        <p class="description">
+                            Built a personal digital profile page using semantic HTML, a separate external stylesheet, and basic Git repository management.
+                        </p>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://tugas1-pi.vercel.app/" class="demo-link" target="_blank" rel="noopener noreferrer">Live demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="https://github.com/AgungCahyo02/Tugas-1-SMKN-1-KEPANJEN.git" target="_blank" rel="noopener noreferrer" class="repo-link">
+                            Source code <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Proyek 2 -->
+                <article class="project-card" data-project="2">
+                    <div class="card-browser-bar">
+                        <div class="browser-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="card-badge-num">TASK 02</span>
+                    </div>
+
+                    <img src="foto-tugas2.jpg" alt="Preview of the Responsive Card and Skill Matrix project" class="project-thumbnail">
+
+                    <div class="project-body">
+                        <div class="project-meta"><span>MODULE 02</span><span>FLEXBOX · RWD</span><button type="button" class="modal-trigger" data-project="2">Details</button></div>
+                        <h3>Responsive Card & Skill Matrix</h3>
+                        <div class="tech-pills">
+                            <span class="pill">CSS Flexbox</span>
+                            <span class="pill">Media Queries</span>
+                            <span class="pill">Mobile-First</span>
+                        </div>
+                        <p class="description">
+                            Developed an adaptive profile card that shifts from a single-column smartphone layout to two columns on desktop, and audited it with Chrome DevTools.
+                        </p>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://tugas-2-smkn-1-kepanjen.vercel.app/" class="demo-link" target="_blank" rel="noopener noreferrer">Live demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="https://github.com/AgungCahyo02/Tugas-2-SMKN-1-KEPANJEN.git" target="_blank" rel="noopener noreferrer" class="repo-link">
+                            Source code <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Proyek 3 -->
+                <article class="project-card" data-project="3">
+                    <div class="card-browser-bar">
+                        <div class="browser-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="card-badge-num">TASK 03</span>
+                    </div>
+
+                    <img src="foto-tugas3.jpg" alt="Preview of the Interactive Profile project" class="project-thumbnail">
+
+                    <div class="project-body">
+                        <div class="project-meta"><span>MODULE 03</span><span>JAVASCRIPT · DOM</span><button type="button" class="modal-trigger" data-project="3">Details</button></div>
+                        <h3>Interactive Profile & Modal Popup</h3>
+                        <div class="tech-pills">
+                            <span class="pill">Vanilla JavaScript</span>
+                            <span class="pill">DOM Events</span>
+                            <span class="pill">State Handling</span>
+                        </div>
+                        <p class="description">
+                            Added interactive features with vanilla JavaScript, including a dismissible modal, real-time DOM updates, and keyboard event handling.
+                        </p>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://tugas-3-smkn-1-kepanjen.vercel.app/" class="demo-link" target="_blank" rel="noopener noreferrer">Live demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="https://github.com/AgungCahyo02/Tugas-3-SMKN-1-KEPANJEN.git" target="_blank" rel="noopener noreferrer" class="repo-link">
+                            Source code <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- CALL TO ACTION / KONTAK SECTION -->
+        <section id="contact-section" class="cta-section">
+            <div class="cta-card cta-layout">
+                <div class="cta-content">
+                    <span class="section-tag">OPEN TO PROJECTS &amp; COLLABORATION</span>
+                    <h2>Let’s build something together.</h2>
+                </div>
+                <div class="cta-side">
+                    <p>Have an idea for a website or want to collaborate on a project? I’d love to hear what you’re working on.</p>
+                    <div class="cta-actions">
+                        <a href="mailto:agungrplkanesa@gmail.com" class="btn-secondary">
+                            Start a conversation <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
+                        <button type="button" id="btn-copy-email" class="btn-copy-link" title="Copy email address">
+                            <i class="fa-regular fa-copy"></i> <span id="copy-text">Copy email</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-brand">
+                <h2>Agung Cahyo.</h2>
+                <p>Student developer · Malang, Indonesia</p>
+                <div class="footer-social">
+                    <a href="https://github.com/AgungCahyo02" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/agung-cahyo-a1457a440" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="mailto:agungrplkanesa@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-explore">
+                <span>EXPLORE</span>
+                <nav class="footer-nav" aria-label="Footer navigation">
+                    <a href="#about">About me</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact-section">Get in touch</a>
+                </nav>
+                <button type="button" id="btn-resume" class="btn-resume-link">View resume</button>
+            </div>
+
+            <div class="footer-monogram" aria-hidden="true">AC</div>
+            </div>
+
+            <div class="footer-bottom">
+            <p>&copy; <span id="year">2026</span> Agung Cahyo <span aria-hidden="true">·</span> Made in Malang</p>
+            <div class="easter-egg">
+                <a href="#hero">Back to top ↑</a>
+            </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Back to Top Button -->
+    <button id="btn-back-to-top" class="back-to-top" aria-label="Back to the top of the page" title="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Toast Notification (Salin Email Feedback) -->
+    <div id="toast" class="toast" role="status" aria-live="polite">
+        <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+        <span id="toast-message"></span>
+    </div>
+
+    <!-- MODAL STUDI KASUS PROYEK -->
+    <div id="modalStudiKasus" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="studiKasusTitle">
+        <div class="modal-box modal-box-large" tabindex="-1">
+            <div class="modal-header">
+                <span class="badge-label" id="studiKasusTag">CASE STUDY</span>
+                <h2 id="studiKasusTitle">Project Title</h2>
+                <p id="studiKasusStack" class="tech-stack">Tech Stack</p>
+            </div>
+            <div class="modal-body">
+                <div class="case-study-section">
+                    <h4><i class="fa-solid fa-bullseye"></i> Project Overview</h4>
+                    <p id="studiKasusOverview">Project description...</p>
+                </div>
+                <div class="case-study-section">
+                    <h4><i class="fa-solid fa-list-check"></i> Key Skills & Highlights</h4>
+                    <ul id="studiKasusPoints" class="case-points-list">
+                        <!-- Diisi secara dinamis via JS -->
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer-actions">
+                <a id="studiKasusRepo" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                    <i class="fa-brands fa-github"></i> Visit Repository
+                </a>
+                <button id="btnTutupStudiKasus" class="btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL RESUME -->
+    <div id="modalResume" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="resumeTitle">
+        <div class="modal-box" tabindex="-1">
+            <div class="modal-icon-header">
+                <i class="fa-regular fa-file-lines"></i>
+            </div>
+            <h2 id="resumeTitle">Resume Summary</h2>
+            <div class="resume-preview">
+                <p class="resume-intro"><strong>Agung Cahyo</strong> — Software Engineering student at SMKN 1 Kepanjen</p>
+                <div class="resume-points">
+                    <p><i class="fa-solid fa-check text-moss"></i> <strong>Focus:</strong> Front-End Web Development, Responsive UI/UX</p>
+                    <p><i class="fa-solid fa-check text-moss"></i> <strong>Tech:</strong> Semantic HTML5, Modern CSS3, Vanilla JS DOM, Git</p>
+                    <p><i class="fa-solid fa-check text-moss"></i> <strong>Auditing:</strong> Chrome DevTools Emulation & Lighthouse</p>
+                </div>
+                <p class="resume-note">A full Curriculum Vitae (CV) in PDF format is available upon request by email.</p>
+            </div>
+            <div class="modal-actions-grid">
+                <a href="mailto:agungrplkanesa@gmail.com?subject=Request%20CV%20Agung%20Cahyo" class="btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Request CV by Email
+                </a>
+            </div>
+            <button id="btnTutupResume" class="btn-tutup">Close</button>
+        </div>
+    </div>
+
+</body>
+</html>
