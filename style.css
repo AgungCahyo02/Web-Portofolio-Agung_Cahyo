@@ -2845,19 +2845,21 @@ body.light-mode .floating-badge {
 .stats-strip {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    width: min(100% - 48px, 1160px);
-    margin: 0 auto;
-    background: var(--bg-card);
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
+    width: 100%;
+    margin: 0 0 1.65rem;
 }
 
 .stats-strip-item {
     display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    min-height: 112px;
-    padding: 1.2rem 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    min-width: 0;
+    padding: 0 0.85rem;
+}
+
+.stats-strip-item:first-child {
+    padding-left: 0;
 }
 
 .stats-strip-item + .stats-strip-item {
@@ -2867,7 +2869,7 @@ body.light-mode .floating-badge {
 .stats-strip-item > strong {
     color: #c8d8ce;
     font-family: var(--font-mono);
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-weight: 500;
     line-height: 1;
 }
@@ -2880,7 +2882,7 @@ body.light-mode .stats-strip-item > strong {
     display: flex;
     flex-direction: column;
     color: var(--text-muted);
-    font-size: 0.77rem;
+    font-size: 0.68rem;
     line-height: 1.5;
 }
 
@@ -3317,17 +3319,25 @@ footer {
 
     .hero-grid {
         min-height: 0;
-        grid-template-columns: minmax(0, 1fr) minmax(250px, 0.8fr);
+        grid-template-columns: 1fr;
         gap: 2.5rem;
+    }
+
+    .hero-image-wrapper {
+        grid-row: 1;
+        grid-column: auto;
+    }
+
+    .badge-top {
+        top: 8px;
+        right: 8px;
+        left: auto;
+        transform: none;
     }
 
     .image-card {
         width: min(100%, 320px);
         height: 370px;
-    }
-
-    .stats-strip {
-        width: min(100% - 48px, 720px);
     }
 
     .skills-list {
@@ -3383,7 +3393,6 @@ footer {
     }
 
     .hero-image-wrapper {
-        grid-row: auto;
         grid-column: auto;
         justify-content: center;
         padding: 0 1rem 1rem;
@@ -3395,9 +3404,10 @@ footer {
     }
 
     .badge-top {
-        top: -15px;
-        right: -12px;
+        top: 8px;
+        right: 8px;
         left: auto;
+        transform: none;
     }
 
     .badge-bottom {
@@ -3407,8 +3417,7 @@ footer {
     }
 
     .stats-strip-item {
-        gap: 0.7rem;
-        padding: 1rem;
+        padding: 0 0.55rem;
     }
 
     .about-layout {
@@ -3481,18 +3490,8 @@ footer {
         width: auto;
     }
 
-    .stats-strip {
-        width: min(100% - 36px, 460px);
-        grid-template-columns: 1fr;
-    }
-
     .stats-strip-item {
-        min-height: 72px;
-    }
-
-    .stats-strip-item + .stats-strip-item {
-        border-top: 1px solid var(--border-color);
-        border-left: 0;
+        padding: 0 0.4rem;
     }
 
     #about {
