@@ -6,25 +6,68 @@
 document.addEventListener('DOMContentLoaded', () => {
     const pageLoader = document.querySelector('#page-loader');
     if (pageLoader) {
-        const minimumDisplayTime = 1000;
+        const minimumDisplayTime = 3000;
         const loaderStartedAt = performance.now();
+        const progressLabel = pageLoader.querySelector('#loader-progress');
+        let pageLoaded = document.readyState === 'complete';
+        let currentProgress = 1;
+        let loaderDismissed = false;
 
-        const hidePageLoader = () => {
+        const updateProgress = (progress) => {
+            currentProgress = progress;
+            progressLabel.textContent = `${progress}%`;
+            progressLabel.setAttribute('aria-valuenow', String(progress));
+        };
+
+        const animateProgress = (timestamp) => {
+            if (loaderDismissed || currentProgress >= 95) {
+                return;
+            }
+
+            const elapsed = timestamp - loaderStartedAt;
+            const progress = Math.min(
+                95,
+                1 + Math.floor((elapsed / minimumDisplayTime) * 94)
+            );
+
+            if (progress > currentProgress) {
+                updateProgress(progress);
+            }
+
+            window.requestAnimationFrame(animateProgress);
+        };
+
+        const dismissLoader = () => {
+            if (loaderDismissed) {
+                return;
+            }
+
+            loaderDismissed = true;
+            updateProgress(100);
+            window.setTimeout(() => {
+                pageLoader.setAttribute('aria-hidden', 'true');
+                pageLoader.classList.add('is-hiding');
+                window.setTimeout(() => {
+                    pageLoader.classList.add('is-hidden');
+                }, 260);
+            }, 180);
+        };
+
+        const finishLoading = () => {
+            pageLoaded = true;
             const remainingDisplayTime = Math.max(
                 0,
                 minimumDisplayTime - (performance.now() - loaderStartedAt)
             );
-
-            window.setTimeout(() => {
-                pageLoader.setAttribute('aria-hidden', 'true');
-                pageLoader.classList.add('is-hidden');
-            }, remainingDisplayTime);
+            window.setTimeout(dismissLoader, remainingDisplayTime);
         };
 
-        if (document.readyState === 'complete') {
-            hidePageLoader();
+        window.requestAnimationFrame(animateProgress);
+
+        if (pageLoaded) {
+            finishLoading();
         } else {
-            window.addEventListener('load', hidePageLoader, { once: true });
+            window.addEventListener('load', finishLoading, { once: true });
         }
     }
 
@@ -182,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const revealTargets = document.querySelectorAll(
         '.stats-strip, #about .about-intro, #about .about-detail-row, '
-        + '#expertise .skills-heading, #expertise .skills-list > span, '
+        + '#expertise .skills-heading, #expertise .skills-list > li, '
         + '#projects .section-header, #projects .project-card, '
         + '#contact-section .cta-card, footer .footer-brand, '
         + 'footer .footer-explore, footer .footer-bottom'

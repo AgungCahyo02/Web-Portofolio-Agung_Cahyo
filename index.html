@@ -22,10 +22,17 @@
 </head>
 <body>
 
-    <div id="page-loader" class="page-loader" role="status" aria-live="polite" aria-label="Loading portfolio">
-        <span class="loader-mark" aria-hidden="true">AC</span>
-        <span class="loader-bar" aria-hidden="true"><span></span></span>
-        <span class="loader-text">Loading...</span>
+    <div id="page-loader" class="page-loader" role="status" aria-live="polite" aria-label="Loading Portfolio AC">
+        <span class="loader-brand">PORTFOLIO <strong>AC</strong></span>
+        <div class="loader-status">
+            <span class="loader-cube" aria-hidden="true">
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </span>
+            <span class="loader-text">Loading</span>
+            <span id="loader-progress" class="loader-progress" role="progressbar" aria-label="Loading progress" aria-valuemin="1" aria-valuemax="100" aria-valuenow="1">1%</span>
+        </div>
     </div>
     <noscript>
         <style>
@@ -154,32 +161,34 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </ul>
         </section>
 
         <!-- ABOUT SECTION -->
         <section id="about">
-            <div class="section-header">
-                <span class="section-tag">ABOUT ME</span>
-            </div>
-
             <div class="about-layout">
                 <div class="about-intro">
-                    <h2>Curious about how the web <span>comes together.</span></h2>
-                    <p>I’m Agung Cahyo, a Software Engineering student at SMKN 1 Kepanjen and an aspiring Front-End Developer. I learn best through hands-on project building, focusing on writing clean, thoughtful code to deliver intuitive, user-friendly web experiences.</p>
+                    <div class="about-heading">
+                        <span class="section-tag">A LITTLE ABOUT ME</span>
+                        <h2>Learning web development, <span>one project at a time.</span></h2>
+                    </div>
+                    <p>I’m Agung, a Software Engineering student at SMKN 1 Kepanjen. I like seeing an idea turn into a page I can use—and figuring out what to fix when it doesn’t work the way I expected.</p>
                 </div>
                 <div class="about-details">
                     <div class="about-detail-row">
-                        <strong>Education</strong>
-                        <p>I’m studying Software Engineering (Rekayasa Perangkat Lunak) at SMKN 1 Kepanjen.</p>
+                        <span class="about-step" aria-hidden="true">01</span>
+                        <strong>Where I study</strong>
+                        <p>I study Software Engineering (Rekayasa Perangkat Lunak) at SMKN 1 Kepanjen.</p>
                     </div>
                     <div class="about-detail-row">
-                        <strong>Industry learning</strong>
-                        <p>I am currently taking part in the UBIG Industry Class at PT. Universal Big Data, focusing on honing and expanding my skills in web application development.</p>
+                        <span class="about-step" aria-hidden="true">02</span>
+                        <strong>What I’m learning</strong>
+                        <p>Through the UBIG Industry Class at PT. Universal Big Data, I’m learning more about building web applications.</p>
                     </div>
                     <div class="about-detail-row">
-                        <strong>Current focus</strong>
-                        <p>Building practical projects, iterating to learn, and polishing the details to make websites clean, clear, and impactful.</p>
+                        <span class="about-step" aria-hidden="true">03</span>
+                        <strong>How I practice</strong>
+                        <p>I build small web projects, then revisit the layout, mobile view, and interactions to see what I can improve.</p>
                     </div>
                 </div>
             </div>
@@ -190,13 +199,13 @@
             <div class="skills-heading">
                 <span class="section-tag">WHAT I’M WORKING WITH</span>
             </div>
-            <div class="skills-list">
-                <span>HTML5 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
-                <span>CSS3 &amp; Flexbox <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
-                <span>Responsive design <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
-                <span>JavaScript &amp; DOM <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
-                <span>Git &amp; GitHub <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
-            </div>
+            <ul class="skills-list">
+                <li><i class="fa-brands fa-html5" aria-hidden="true"></i><span>HTML5</span></li>
+                <li><i class="fa-brands fa-css3-alt" aria-hidden="true"></i><span>CSS3 &amp; Flexbox</span></li>
+                <li><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i><span>Responsive design</span></li>
+                <li><i class="fa-brands fa-js" aria-hidden="true"></i><span>JavaScript &amp; DOM</span></li>
+                <li><i class="fa-brands fa-github" aria-hidden="true"></i><span>Git &amp; GitHub</span></li>
+            </ul>
         </section>
 
         <!-- PROJECTS SECTION -->
@@ -318,14 +327,14 @@
         <section id="contact-section" class="cta-section">
             <div class="cta-card cta-layout">
                 <div class="cta-content">
-                    <span class="section-tag">OPEN TO PROJECTS &amp; COLLABORATION</span>
-                    <h2>Let’s build something together.</h2>
+                    <span class="section-tag">GET IN TOUCH</span>
+                    <h2>Want to talk about a project?</h2>
                 </div>
                 <div class="cta-side">
-                    <p>Have an idea for a website or want to collaborate on a project? I’d love to hear what you’re working on.</p>
+                    <p>I’m learning front-end development and always glad to talk about the things I’m building. If you have a question or an idea, send me an email.</p>
                     <div class="cta-actions">
                         <a href="mailto:agungrplkanesa@gmail.com" class="btn-secondary">
-                            Start a conversation <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                            Email me <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                         </a>
                         <button type="button" id="btn-copy-email" class="btn-copy-link" title="Copy email address">
                             <i class="fa-regular fa-copy"></i> <span id="copy-text">Copy email</span>
@@ -341,33 +350,36 @@
         <div class="footer-content">
             <div class="footer-top">
                 <div class="footer-brand">
-                <h2>Agung Cahyo.</h2>
-                <p>Student developer · Malang, Indonesia</p>
-                <div class="footer-social">
-                    <a href="https://github.com/AgungCahyo02" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/agung-cahyo-a1457a440" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="mailto:agungrplkanesa@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+                    <h2>Agung Cahyo.</h2>
+                    <p>Student developer · Malang, Indonesia</p>
+                    <nav class="footer-social" aria-label="Social links">
+                        <a href="https://github.com/AgungCahyo02" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-github" aria-hidden="true"></i><span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/agung-cahyo-a1457a440" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span>LinkedIn</span>
+                        </a>
+                        <a href="mailto:agungrplkanesa@gmail.com">
+                            <i class="fa-regular fa-envelope" aria-hidden="true"></i><span>Email</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <div class="footer-explore">
+                    <nav class="footer-nav" aria-label="Footer navigation">
+                        <a href="#about">About</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#contact-section">Contact</a>
+                    </nav>
+                    <button type="button" id="btn-resume" class="btn-resume-link">View resume</button>
                 </div>
             </div>
 
-            <div class="footer-explore">
-                <span>EXPLORE</span>
-                <nav class="footer-nav" aria-label="Footer navigation">
-                    <a href="#about">About me</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact-section">Get in touch</a>
-                </nav>
-                <button type="button" id="btn-resume" class="btn-resume-link">View resume</button>
-            </div>
-
-            <div class="footer-monogram" aria-hidden="true">AC</div>
-            </div>
-
             <div class="footer-bottom">
-            <p>&copy; <span id="year">2026</span> Agung Cahyo <span aria-hidden="true">·</span> Made in Malang</p>
-            <div class="easter-egg">
-                <a href="#hero">Back to top ↑</a>
-            </div>
+                <p>&copy; <span id="year">2026</span> Agung Cahyo <span aria-hidden="true">·</span> Made in Malang</p>
+                <div class="easter-egg">
+                    <a href="#hero">Back to top ↑</a>
+                </div>
             </div>
         </div>
     </footer>
